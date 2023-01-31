@@ -4,11 +4,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class App 
-{
+public class App {
 
-    public static void main( String[] args ) throws IOException
-    {
+    public static void main(String[] args) throws IOException {
         int threads_ = 0;
         String pathToCSV = "csv/testfile.csv";
         Charts charts = new Charts(pathToCSV);
@@ -16,10 +14,10 @@ public class App
         int workloadSizeSession = 0;
 
         Workload workload = new Workload();
-        workload.range_gain(0.5f, 6f, 0.5f);
-        workload.range_EMA(98, 102);
-        workload.range_SMMA(98, 102);
-        workload.range_RSI(40, 90);
+        workload.range_gain(0.4f, 4f, 0.2f);
+        workload.range_EMA(95, 105);
+        workload.range_SMMA(95, 105);
+        workload.range_RSI(5, 95);
 
         workload.generate();
         workloadSizeSession = workload.getWorkloadQueueSize();
@@ -37,8 +35,8 @@ public class App
             traders[i] = new Thread(new Trader(workload, charts));
             traders[i].start();
         }
-        
-        GUI.showProgress(workload);
+
+        GUI.showProgress(workload, workloadSizeSession);
 
         for (Thread trader : traders) {
             try {
@@ -47,16 +45,18 @@ public class App
                 e.printStackTrace();
             }
         }
-        
+
         long endTime = System.currentTimeMillis();
         long elapsedTime = endTime - startTime;
 
-        System.out.println("Elapsed time: " + elapsedTime + " miliseconds and final size " + workload.getWorkloadQueueSize());
-        
+        System.out.println(
+                "Elapsed time: " + elapsedTime + " miliseconds and final size " + workload.getWorkloadQueueSize());
+
         try {
             FileWriter writer = new FileWriter("elapsedTime.txt", true);
             writer.write("Runtime: " + String.valueOf(elapsedTime) + "ms and " + threads_ +
-            " Threads and Workload of " + workloadSizeSession + ". Speed: " + elapsedTime/workloadSizeSession + " ms per unite.\n");
+                    " Threads and Workload of " + workloadSizeSession + ". Speed: " + elapsedTime / workloadSizeSession
+                    + " ms per unite.\n");
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
