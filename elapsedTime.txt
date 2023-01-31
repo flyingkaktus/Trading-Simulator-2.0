@@ -1,0 +1,22 @@
+Laufzeit: 759ms mit 4 Threads and Workload of 7. Speed: 0 unites/ms.
+Laufzeit: 818ms mit 4 Threads and Workload of 7. Speed: 116 ms per unite.
+Laufzeit: 758ms mit 8 Threads and Workload of 7. Speed: 108 ms per unite.
+Runtime: 40322ms and 4 Threads and Workload of 800. Speed: 50 ms per unite.
+Runtime: 32367ms and 8 Threads and Workload of 800. Speed: 40 ms per unite.
+Runtime: 30649ms and 16 Threads and Workload of 800. Speed: 38 ms per unite.
+Runtime: 79480ms and 2 Threads and Workload of 800. Speed: 99 ms per unite.
+Runtime: 586371ms and 1 Threads and Workload of 800. Speed: 732 ms per unite.
+Runtime: 160133ms and 1 Threads and Workload of 800. Speed: 200 ms per unite.
+Runtime: 160627ms and 1 Threads and Workload of 800. Speed: 200 ms per unite.
+Runtime: 32171ms and 88 Threads and Workload of 800. Speed: 40 ms per unite.
+Runtime: 31039ms and 8 Threads and Workload of 800. Speed: 38 ms per unite.
+Runtime: 31687ms and 8 Threads and Workload of 800. Speed: 39 ms per unite.
+Runtime: 164696ms and 1 Threads and Workload of 800. Speed: 205 ms per unite.
+Runtime: 40472ms and 4 Threads and Workload of 800. Speed: 50 ms per unite.
+Runtime: 32321ms and 8 Threads and Workload of 800. Speed: 40 ms per unite.
+Runtime: 41042ms and 4 Threads and Workload of 800. Speed: 51 ms per unite.
+Runtime: 41052ms and 4 Threads and Workload of 800. Speed: 51 ms per unite.
+Runtime: 31121ms and 8 Threads and Workload of 800. Speed: 38 ms per unite.
+Runtime: 95087ms and 8 Threads and Workload of 2400. Speed: 39 ms per unite.
+Runtime: 107147ms and 8 Threads and Workload of 2400. Speed: 44 ms per unite.
+Runtime: 379388ms and 8 Threads and Workload of 8800. Speed: 43 ms per unite.
