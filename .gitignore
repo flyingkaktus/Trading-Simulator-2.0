@@ -1,1 +1,4 @@
 target/
+Evaluation.csv
+Evaluation_Sorted.csv
+elapsedTime.txt
