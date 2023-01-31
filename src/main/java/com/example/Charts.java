@@ -34,9 +34,10 @@ public class Charts {
                 System.out.println("Zeile wird übersprungen..");
             }
 
+            // newEntry.show();
+
         }
 
         in.close();
-
     }
 }

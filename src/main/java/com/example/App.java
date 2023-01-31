@@ -14,16 +14,16 @@ public class App {
         int workloadSizeSession = 0;
 
         Workload workload = new Workload();
-        workload.range_gain(0.4f, 4f, 0.2f);
-        workload.range_EMA(95, 105);
-        workload.range_SMMA(95, 105);
+        workload.range_gain(0.4f, 8f, 0.2f);
+        workload.range_EMA(94, 106);
+        workload.range_SMMA(94, 106);
         workload.range_RSI(5, 95);
 
         workload.generate();
         workloadSizeSession = workload.getWorkloadQueueSize();
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Bitte geben Sie die Anzahl der Threads an: ");
+        System.out.print("Please enter the number of threads: ");
         threads_ = scanner.nextInt();
         scanner.close();
 
