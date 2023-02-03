@@ -14,10 +14,10 @@ public class App {
         int workloadSizeSession = 0;
 
         Workload workload = new Workload();
-        workload.range_gain(0.4f, 8f, 0.2f);
+        workload.range_gain(0.4f, 2f, 0.2f);
         workload.range_EMA(94, 106);
         workload.range_SMMA(94, 106);
-        workload.range_RSI(5, 95);
+        workload.range_RSI(5, 60);
 
         workload.generate();
         workloadSizeSession = workload.getWorkloadQueueSize();
