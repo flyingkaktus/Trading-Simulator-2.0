@@ -8,14 +8,32 @@ import java.util.Scanner;
 
 public class BinanceDataWriter {
 
-    void getData(int timeInterval, long startTime, long endTime) {
-        long runs = timeInterval * 60 * 1000 * 1000;
+    void getData(String symbol, int timeInterval, String tm, long startTime, long endTime) {
+
+        long runs = 0L;
+
+        switch (tm) {
+            case "m":
+                runs = Long.valueOf(timeInterval) * 60L * 1000L * 1000L;
+                System.out.println("case m");
+                break;
+            case "h":
+                runs = Long.valueOf(timeInterval) * 60L * 1000L * 1000L * 60L;
+                System.out.println("case h");
+                break;
+            case "d":
+                runs = Long.valueOf(timeInterval) * 60L * 1000L * 1000L * 60L * 24L;
+                System.out.println("case d");
+                break;
+        }
+
         while (startTime < endTime) {
             try {
                 // URL für die Binance API-Anfrage erstellen
                 URL url = new URL(
-                        "https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=" + String.valueOf(timeInterval)
-                                + "m&limit=1000&startTime=" + String.valueOf(startTime));
+                        "https://api.binance.com/api/v3/klines?symbol=" + symbol + "&interval="
+                                + String.valueOf(timeInterval)
+                                + tm + "&limit=1000&startTime=" + String.valueOf(startTime));
                 System.out.println(url);
                 System.out.println(runs);
                 // Verbindung zur URL herstellen und Daten abrufen
@@ -53,6 +71,6 @@ public class BinanceDataWriter {
 
         BinanceDataWriter binanceDataWriter = new BinanceDataWriter();
 
-        binanceDataWriter.getData(5, 1640995261000L, 1675511373000L);
+        binanceDataWriter.getData("ADAUSDT", 1, "d", 1640995261000L, 1675511373000L);
     }
 }
