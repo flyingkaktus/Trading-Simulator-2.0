@@ -29,3 +29,5 @@ Runtime: 2374029ms and 12 Threads and Workload of 505440. Speed: 4 ms per unite.
 Runtime: 405091ms and 8 Threads and Workload of 63360. Speed: 6 ms per unite.
 Runtime: 403370ms and 8 Threads and Workload of 63360. Speed: 6 ms per unite.
 Runtime: 417367ms and 8 Threads and Workload of 63360. Speed: 6 ms per unite.
+Runtime: 93071ms and 8 Threads and Workload of 360. Speed: 258 ms per unite.
+Runtime: 245664ms and 8 Threads and Workload of 1160. Speed: 211 ms per unite.

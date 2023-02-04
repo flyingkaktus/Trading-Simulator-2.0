@@ -21,14 +21,13 @@ public class Charts {
             String[] values = line.split(",");
 
             Entry newEntry = new Entry();
-
             try {
-                newEntry.time = Integer.parseInt(values[0]);
+                newEntry.time = Long.parseLong(values[0]);
                 newEntry.close = Float.parseFloat(df.format(Float.parseFloat(values[1])));
-                newEntry.SMMA = Float.parseFloat(df.format((Float.parseFloat(values[2]) / newEntry.close) * 100));
-                newEntry.EMA = Float.parseFloat(df.format((Float.parseFloat(values[3]) / newEntry.close) * 100));
-                newEntry.RSI = Float.parseFloat(df.format(Float.parseFloat(values[4])));
-                newEntry.OBV = Float.parseFloat(df.format(Float.parseFloat(values[5])));
+                // newEntry.SMMA = Float.parseFloat(df.format((Float.parseFloat(values[2]) /
+                // newEntry.close) * 100));
+                newEntry.EMA = Float.parseFloat(df.format((Float.parseFloat(values[2]) / newEntry.close) * 100));
+                // newEntry.RSI = Float.parseFloat(df.format(Float.parseFloat(values[4])));
                 entries.add(newEntry);
             } catch (NumberFormatException e) {
                 System.out.println("Zeile wird übersprungen..");

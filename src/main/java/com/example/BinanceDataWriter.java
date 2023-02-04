@@ -45,7 +45,10 @@ public class BinanceDataWriter {
                     String[] dataRows = line.split("],");
 
                     BufferedWriter writer = new BufferedWriter(
-                            new FileWriter("candlestick_data/candlestick_data.csv", true));
+                            new FileWriter(
+                                    "candlestick_data/candlestick_data" + "_" + symbol + "_" + timeInterval + tm
+                                            + ".csv",
+                                    true));
                     for (String dataRow : dataRows) {
                         String[] data = dataRow.split(",");
 
@@ -71,6 +74,6 @@ public class BinanceDataWriter {
 
         BinanceDataWriter binanceDataWriter = new BinanceDataWriter();
 
-        binanceDataWriter.getData("ADAUSDT", 1, "d", 1640995261000L, 1675511373000L);
+        binanceDataWriter.getData("ADAUSDT", 1, "m", 1640995261000L, 1675511373000L);
     }
 }
