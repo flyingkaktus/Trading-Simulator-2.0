@@ -10,11 +10,11 @@ public class Trader implements Runnable {
     Workload workload;
     Charts chart;
     float konto = 500;
-    int forceSellTime = 2*24*60*60; // 48h
+    long forceSellTime = 72L * 24L * 60L * 60L * 1000L; // 72h
+    long buyTimeout = 5L * 60L * 1000L; // 5 mins
     float konto_ = konto;
-    int buyTimeout = 60 * 5; // in seconds
     float kontoPortfolio;
-    float buyAmount = 25;
+    float buyAmount = 50;
     Portfolio portfolio_;
     LinkedList<Portfolio> portfolio = new LinkedList<>();
     int sold = 0;
@@ -65,11 +65,12 @@ public class Trader implements Runnable {
                 // System.out.println("Es wurde was verkauft!" + sold + "Im Folio: " +
                 // portfolio.size());
                 iterator.remove();
-            }
-            if (portfolioEntry.boughtTime+forceSellTime <= chartsEntry.time && forceSellTime > 0) {
-                konto += portfolioEntry.coinAmount * chartsEntry.close;
-                sold++;
-                iterator.remove();
+            } else {
+                if (portfolioEntry.boughtTime + forceSellTime < chartsEntry.time && forceSellTime > 0L) {
+                    konto += portfolioEntry.coinAmount * chartsEntry.close;
+                    sold++;
+                    iterator.remove();
+                }
             }
         }
     }

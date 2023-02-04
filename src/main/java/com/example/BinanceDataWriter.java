@@ -11,18 +11,19 @@ public class BinanceDataWriter {
     void getData(String symbol, int timeInterval, String tm, long startTime, long endTime) {
 
         long runs = 0L;
+        long interval = 1000L;
 
         switch (tm) {
             case "m":
-                runs = Long.valueOf(timeInterval) * 60L * 1000L * 1000L;
+                runs = Long.valueOf(timeInterval) * 60L * 1000L * interval;
                 System.out.println("case m");
                 break;
             case "h":
-                runs = Long.valueOf(timeInterval) * 60L * 1000L * 1000L * 60L;
+                runs = Long.valueOf(timeInterval) * 60L * 60L * 1000L * interval;
                 System.out.println("case h");
                 break;
             case "d":
-                runs = Long.valueOf(timeInterval) * 60L * 1000L * 1000L * 60L * 24L;
+                runs = Long.valueOf(timeInterval) * 24L * 60L * 60L * 1000L * interval;
                 System.out.println("case d");
                 break;
         }
@@ -33,7 +34,8 @@ public class BinanceDataWriter {
                 URL url = new URL(
                         "https://api.binance.com/api/v3/klines?symbol=" + symbol + "&interval="
                                 + String.valueOf(timeInterval)
-                                + tm + "&limit=1000&startTime=" + String.valueOf(startTime));
+                                + tm + "&limit=" + String.valueOf(interval) + "&startTime="
+                                + String.valueOf(startTime));
                 System.out.println(url);
                 System.out.println(runs);
                 // Verbindung zur URL herstellen und Daten abrufen

@@ -8,31 +8,31 @@ public class App {
 
     public static void main(String[] args) throws IOException {
         int threads_ = 0;
-        String pathToCSV = "rdy_for_app2.csv";
+        String pathToCSV = "rdy_for_app.csv";
         Charts charts = new Charts(pathToCSV);
         System.out.println(charts.entries.size());
         int workloadSizeSession = 0;
-        
+
         /*
          * TODO
          * 
-         *  - EMA, RSI und SMMA berechnen aus close value
-         *  - 6-24h Trading (4300 entry) -> calc new settings
-         *  - calc new settings depending on 
-         *      long long trend (0, 7d),
-         *      long trend (1, 3d),
-         *      middle trend (2, 1d),
-         *      short trend (3, 12h),
-         *      super short trend (4, 6h) 
+         * - EMA, RSI und SMMA berechnen aus close value
+         * - 6-24h Trading (4300 entry) -> calc new settings
+         * - calc new settings depending on
+         * long long trend (0, 7d),
+         * long trend (1, 3d),
+         * middle trend (2, 1d),
+         * short trend (3, 12h),
+         * super short trend (4, 6h)
          * 
-         *  -> test for 3 months of data (=129.000 entryies)
-         *  
-         *  -> force sell after 48h
+         * -> test for 3 months of data (=129.000 entryies)
+         * 
+         * -> force sell after 48h
          * 
          */
-        
+
         Workload workload = new Workload();
-        workload.range_gain(0.4f, 6f, 0.2f);
+        workload.range_gain(0.4f, 10f, 0.2f);
         workload.range_EMA(80, 120);
         // workload.range_SMMA(94, 106);
         // workload.range_RSI(5, 60);
