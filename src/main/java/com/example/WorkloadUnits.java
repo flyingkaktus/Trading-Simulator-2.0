@@ -3,14 +3,14 @@ package com.example;
 public class WorkloadUnits {
 
     float gain;
-    float SMMA;
+    // float SMMA;
     float EMA;
-    float RSI;
+    // float RSI;
 
     void show_all() {
         System.out.println("Gain: " + gain);
-        System.out.println("SMMA: " + SMMA);
+        // System.out.println("SMMA: " + SMMA);
         System.out.println("EMA: " + EMA);
-        System.out.println("RSI: " + RSI);
+        // System.out.println("RSI: " + RSI);
     }
 }

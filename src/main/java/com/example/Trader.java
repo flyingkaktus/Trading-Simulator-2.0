@@ -39,8 +39,8 @@ public class Trader implements Runnable {
 
     void operationBuy(Entry chartsEntry, WorkloadUnits workloadUnite) {
         if (chartsEntry.EMA < workloadUnite.EMA &&
-                chartsEntry.SMMA < workloadUnite.SMMA &&
-                chartsEntry.RSI < workloadUnite.RSI &&
+        // chartsEntry.SMMA < workloadUnite.SMMA &&
+        // chartsEntry.RSI < workloadUnite.RSI &&
                 konto - buyAmount >= buyAmount) {
 
             float boughtAmount = buyAmount / chartsEntry.close;
@@ -102,7 +102,8 @@ public class Trader implements Runnable {
         try {
             FileWriter writer = new FileWriter("Evaluation.csv", true);
             writer.write(
-                    workloadUnite.gain + "," + workloadUnite.SMMA + "," + workloadUnite.EMA + "," + workloadUnite.RSI
+                    workloadUnite.gain + "," // + workloadUnite.SMMA + ","
+                            + workloadUnite.EMA + "," // + workloadUnite.RSI
                             + "," + kontoPortfolio + "," + konto + "," + ((konto + kontoPortfolio) / konto_) + "\n");
             writer.close();
         } catch (Exception e) {
