@@ -10,11 +10,14 @@ import java.util.List;
 
 public class EMA {
     public static void main(String[] args) {
-        String csvFile = "candlestick_data/candlestick_data_ADAUSDT_1m.csv";
+        String csvFile = "candlestick_data/candlestick_data_ADAUSDT_1m_1613347501000.csv";
         String line = "";
         String cvsSplitBy = ",";
         List<Data> dataList = new ArrayList<>();
-        int candles = 500;
+        int candles0 = 10000;
+        int candles1 = 250;
+        int candles2 = 100;
+        int candles3 = 50;
         DecimalFormat df = new DecimalFormat("#.###");
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
@@ -29,12 +32,37 @@ public class EMA {
             }
 
             // EMA berechnen
-            float ema = 0;
-            for (int i = candles; i < dataList.size(); i++) {
-                float prevEma = ema;
+
+            float ema0 = 0;
+            for (int i = candles0; i < dataList.size(); i++) {
+                float prevEma = ema0;
                 float price = dataList.get(i).price;
-                ema = (price * 2 + prevEma * (candles - 1)) / (candles + 1);
-                dataList.get(i).ema = Float.parseFloat(df.format(ema));
+                ema0 = (price * 2 + prevEma * (candles0 - 1)) / (candles0 + 1);
+                dataList.get(i).ema0 = Float.parseFloat(df.format(ema0));
+            }
+
+            float ema1 = 0;
+            for (int i = candles1; i < dataList.size(); i++) {
+                float prevEma = ema1;
+                float price = dataList.get(i).price;
+                ema1 = (price * 2 + prevEma * (candles1 - 1)) / (candles1 + 1);
+                dataList.get(i).ema1 = Float.parseFloat(df.format(ema1));
+            }
+
+            float ema2 = 0;
+            for (int i = candles2; i < dataList.size(); i++) {
+                float prevEma = ema2;
+                float price = dataList.get(i).price;
+                ema2 = (price * 2 + prevEma * (candles2 - 1)) / (candles2 + 1);
+                dataList.get(i).ema2 = Float.parseFloat(df.format(ema2));
+            }
+
+            float ema3 = 0;
+            for (int i = candles3; i < dataList.size(); i++) {
+                float prevEma = ema3;
+                float price = dataList.get(i).price;
+                ema3 = (price * 2 + prevEma * (candles3 - 1)) / (candles3 + 1);
+                dataList.get(i).ema3 = Float.parseFloat(df.format(ema3));
             }
 
             // EMA zur CSV hinzufügen
@@ -43,7 +71,13 @@ public class EMA {
                 writer.append(",");
                 writer.append("price");
                 writer.append(",");
-                writer.append("EMA");
+                writer.append("EMA_" + candles0);
+                writer.append(",");
+                writer.append("EMA_" + candles1);
+                writer.append(",");
+                writer.append("EMA_" + candles2);
+                writer.append(",");
+                writer.append("EMA_" + candles3);
                 writer.append("\n");
 
                 for (Data d : dataList) {
@@ -51,7 +85,13 @@ public class EMA {
                     writer.append(",");
                     writer.append(String.valueOf(d.price));
                     writer.append(",");
-                    writer.append(String.valueOf(d.ema));
+                    writer.append(String.valueOf(d.ema0));
+                    writer.append(",");
+                    writer.append(String.valueOf(d.ema1));
+                    writer.append(",");
+                    writer.append(String.valueOf(d.ema2));
+                    writer.append(",");
+                    writer.append(String.valueOf(d.ema3));
                     writer.append("\n");
                 }
             } catch (IOException e) {
@@ -65,7 +105,10 @@ public class EMA {
     static class Data {
         long timestamp;
         float price;
-        float ema;
+        float ema0;
+        float ema1;
+        float ema2;
+        float ema3;
 
         public Data(long timestamp, float price) {
             this.timestamp = timestamp;

@@ -26,7 +26,10 @@ public class Charts {
                 newEntry.close = Float.parseFloat(df.format(Float.parseFloat(values[1])));
                 // newEntry.SMMA = Float.parseFloat(df.format((Float.parseFloat(values[2]) /
                 // newEntry.close) * 100));
-                newEntry.EMA = Float.parseFloat(df.format((Float.parseFloat(values[2]) / newEntry.close) * 100));
+                newEntry.EMA0 = Float.parseFloat(df.format((Float.parseFloat(values[2]) / newEntry.close) * 100));
+                newEntry.EMA1 = Float.parseFloat(df.format((Float.parseFloat(values[3]) / newEntry.close) * 100));
+                newEntry.EMA2 = Float.parseFloat(df.format((Float.parseFloat(values[4]) / newEntry.close) * 100));
+                newEntry.EMA3 = Float.parseFloat(df.format((Float.parseFloat(values[5]) / newEntry.close) * 100));
                 // newEntry.RSI = Float.parseFloat(df.format(Float.parseFloat(values[4])));
                 entries.add(newEntry);
             } catch (NumberFormatException e) {

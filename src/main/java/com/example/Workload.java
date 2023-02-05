@@ -36,15 +36,24 @@ public class Workload {
     void generate() {
         for (float g = gain_low; g < gain_high; g += gain_steps) {
             // for (float s = SMMA_low; s < SMMA_high; s++) {
-            for (float e = EMA_low; e < EMA_high; e++) {
-                // for (float r = RSI_low; r < RSI_high; r++) {
-                WorkloadUnits workloadUnite = new WorkloadUnits();
-                workloadUnite.gain = g;
-                // workloadUnite.SMMA = s;
-                workloadUnite.EMA = e;
-                // workloadUnite.RSI = r;
-                workloadQueue.add(workloadUnite);
-                // }
+            for (float e0 = EMA_low; e0 < EMA_high; e0++) {
+                for (float e1 = EMA_low; e1 < EMA_high; e1++) {
+                    for (float e2 = EMA_low; e2 < EMA_high; e2++) {
+                        for (float e3 = EMA_low; e3 < EMA_high; e3++) {
+                            // for (float r = RSI_low; r < RSI_high; r++) {
+                            WorkloadUnits workloadUnite = new WorkloadUnits();
+                            workloadUnite.gain = g;
+                            // workloadUnite.SMMA = s;
+                            workloadUnite.EMA0 = e0;
+                            workloadUnite.EMA1 = e1;
+                            workloadUnite.EMA2 = e2;
+                            workloadUnite.EMA3 = e3;
+                            // workloadUnite.RSI = r;
+                            workloadQueue.add(workloadUnite);
+                            // }
+                        }
+                    }
+                }
             }
             // }
         }

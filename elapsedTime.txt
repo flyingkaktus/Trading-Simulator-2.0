@@ -1,0 +1,12 @@
+Runtime: 201805ms and 12 Threads and Workload of 1160. Speed: 173 ms per unite.
+Runtime: 195289ms and 12 Threads and Workload of 1160. Speed: 168 ms per unite.
+Runtime: 196985ms and 12 Threads and Workload of 1160. Speed: 169 ms per unite.
+Runtime: 59329ms and 12 Threads and Workload of 1160. Speed: 51 ms per unite.
+Runtime: 60027ms and 12 Threads and Workload of 1160. Speed: 51 ms per unite.
+Runtime: 195102ms and 12 Threads and Workload of 1160. Speed: 168 ms per unite.
+Runtime: 60355ms and 12 Threads and Workload of 1160. Speed: 52 ms per unite.
+Runtime: 195195ms and 12 Threads and Workload of 1160. Speed: 168 ms per unite.
+Runtime: 177158ms and 12 Threads and Workload of 1960. Speed: 90 ms per unite.
+Runtime: 728201ms and 12 Threads and Workload of 1960. Speed: 371 ms per unite.
+Runtime: 670608ms and 12 Threads and Workload of 1960. Speed: 342 ms per unite.
+Runtime: 14855237ms and 12 Threads and Workload of 80000. Speed: 185 ms per unite.

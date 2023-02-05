@@ -38,9 +38,12 @@ public class Trader implements Runnable {
     }
 
     void operationBuy(Entry chartsEntry, WorkloadUnits workloadUnite) {
-        if (chartsEntry.EMA < workloadUnite.EMA &&
-        // chartsEntry.SMMA < workloadUnite.SMMA &&
-        // chartsEntry.RSI < workloadUnite.RSI &&
+        if (chartsEntry.EMA0 < workloadUnite.EMA0 &&
+                chartsEntry.EMA1 < workloadUnite.EMA1 &&
+                chartsEntry.EMA2 < workloadUnite.EMA2 &&
+                chartsEntry.EMA3 < workloadUnite.EMA3 &&
+                // chartsEntry.SMMA < workloadUnite.SMMA &&
+                // chartsEntry.RSI < workloadUnite.RSI &&
                 konto - buyAmount >= buyAmount) {
 
             float boughtAmount = buyAmount / chartsEntry.close;
@@ -101,11 +104,12 @@ public class Trader implements Runnable {
 
     void saveResult(WorkloadUnits workloadUnite) {
         try {
-            FileWriter writer = new FileWriter("Evaluation.csv", true);
+            FileWriter writer = new FileWriter("data/csv/output_Evaluation.csv", true);
             writer.write(
                     workloadUnite.gain + "," // + workloadUnite.SMMA + ","
-                            + workloadUnite.EMA + "," // + workloadUnite.RSI
-                            + "," + kontoPortfolio + "," + konto + "," + ((konto + kontoPortfolio) / konto_) + "\n");
+                            + workloadUnite.EMA0 + "," + workloadUnite.EMA1 + "," + workloadUnite.EMA2 + ","
+                            + workloadUnite.EMA3 + ","// + workloadUnite.RSI + ","
+                            + kontoPortfolio + "," + konto + "," + ((konto + kontoPortfolio) / konto_) + "\n");
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -123,6 +127,6 @@ public class Trader implements Runnable {
             }
             reset();
         }
-        System.out.println(Thread.currentThread().getName() + "is done.");
+        System.out.println(Thread.currentThread().getName() + " is done.");
     }
 }

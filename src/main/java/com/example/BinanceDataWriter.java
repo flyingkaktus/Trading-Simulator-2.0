@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class BinanceDataWriter {
 
     void getData(String symbol, int timeInterval, String tm, long startTime, long endTime) {
-
+        long startTime_ = startTime;
         long runs = 0L;
         long interval = 1000L;
 
@@ -48,7 +48,8 @@ public class BinanceDataWriter {
 
                     BufferedWriter writer = new BufferedWriter(
                             new FileWriter(
-                                    "candlestick_data/candlestick_data" + "_" + symbol + "_" + timeInterval + tm
+                                    "candlestick_data/candlestick_data" + "_" + symbol + "_" + timeInterval + tm + "_"
+                                            + startTime_
                                             + ".csv",
                                     true));
                     for (String dataRow : dataRows) {
@@ -76,6 +77,6 @@ public class BinanceDataWriter {
 
         BinanceDataWriter binanceDataWriter = new BinanceDataWriter();
 
-        binanceDataWriter.getData("ADAUSDT", 1, "m", 1640995261000L, 1675511373000L);
+        binanceDataWriter.getData("ADAUSDT", 1, "m", 1613347501000L, 1675511373000L);
     }
 }

@@ -30,10 +30,15 @@ public class App {
          * -> force sell after 48h
          * 
          */
+        long heapSize = Runtime.getRuntime().totalMemory();
+        long heapFreeSize = Runtime.getRuntime().freeMemory();
+
+        System.out.println("Heap Size = " + heapSize / (1024 * 1024) + " MB");
+        System.out.println("Heap Free Size = " + heapFreeSize / (1024 * 1024) + " MB");
 
         Workload workload = new Workload();
-        workload.range_gain(0.4f, 10f, 0.2f);
-        workload.range_EMA(80, 120);
+        workload.range_gain(1.2f, 1.4f, 0.2f);
+        workload.range_EMA(89, 111);
         // workload.range_SMMA(94, 106);
         // workload.range_RSI(5, 60);
 
