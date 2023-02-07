@@ -37,8 +37,8 @@ public class App {
         System.out.println("Heap Free Size = " + heapFreeSize / (1024 * 1024) + " MB");
 
         Workload workload = new Workload();
-        workload.range_gain(1.2f, 1.4f, 0.2f);
-        workload.range_EMA(89, 111);
+        workload.range_gain(0.6f, 0.8f, 0.2f);
+        workload.range_EMA(85, 115);
         // workload.range_SMMA(94, 106);
         // workload.range_RSI(5, 60);
 

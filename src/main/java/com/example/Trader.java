@@ -10,8 +10,8 @@ public class Trader implements Runnable {
     Workload workload;
     Charts chart;
     float konto = 500;
-    long forceSellTime = 72L * 24L * 60L * 60L * 1000L; // 72h
-    long buyTimeout = 5L * 60L * 1000L; // 5 mins
+    long forceSellTime = 12L * 60L * 60L * 1000L; // 12h
+    long buyTimeout = 5L * 60L * 1000L; // 5m
     float konto_ = konto;
     float kontoPortfolio;
     float buyAmount = 50;

@@ -14,10 +14,11 @@ public class EMA {
         String line = "";
         String cvsSplitBy = ",";
         List<Data> dataList = new ArrayList<>();
-        int candles0 = 10000;
-        int candles1 = 250;
-        int candles2 = 100;
-        int candles3 = 50;
+        int candles0 = 10000;   // 7d
+        int candles1 = 1440;     // 24h
+        int candles2 = 1220;     // 12h
+        int candles3 = 180;      // 3h
+        
         DecimalFormat df = new DecimalFormat("#.###");
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
