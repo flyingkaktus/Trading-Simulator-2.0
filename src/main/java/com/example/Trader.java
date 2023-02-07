@@ -2,7 +2,9 @@ package com.example;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class Trader implements Runnable {
@@ -11,10 +13,10 @@ public class Trader implements Runnable {
     Charts chart;
     float konto = 500;
     long forceSellTime = 12L * 60L * 60L * 1000L; // 12h
-    long buyTimeout = 5L * 60L * 1000L; // 5m
+    long buyTimeout = 20L * 60L * 1000L; // 20m
     float konto_ = konto;
     float kontoPortfolio;
-    float buyAmount = 50;
+    float buyAmount = konto / 5;
     Portfolio portfolio_;
     LinkedList<Portfolio> portfolio = new LinkedList<>();
     int sold = 0;
@@ -30,7 +32,7 @@ public class Trader implements Runnable {
         if (portfolio.isEmpty() == true) {
             operationBuy(chartsEntry, workloadUnite);
         } else {
-            if (portfolio.getFirst().boughtAt + buyTimeout <= chartsEntry.time) {
+            if (portfolio.getLast().boughtTime + buyTimeout <= chartsEntry.time) {
                 operationBuy(chartsEntry, workloadUnite);
             }
 
@@ -38,20 +40,20 @@ public class Trader implements Runnable {
     }
 
     void operationBuy(Entry chartsEntry, WorkloadUnits workloadUnite) {
+        buyAmount = konto / 5;
         if (chartsEntry.EMA0 < workloadUnite.EMA0 &&
                 chartsEntry.EMA1 < workloadUnite.EMA1 &&
                 chartsEntry.EMA2 < workloadUnite.EMA2 &&
                 chartsEntry.EMA3 < workloadUnite.EMA3 &&
                 // chartsEntry.SMMA < workloadUnite.SMMA &&
                 // chartsEntry.RSI < workloadUnite.RSI &&
-                konto - buyAmount >= buyAmount) {
+                konto - buyAmount >= 0 && buyAmount >= 15) {
 
             float boughtAmount = buyAmount / chartsEntry.close;
             portfolio_ = new Portfolio(chartsEntry.close, boughtAmount, chartsEntry.time);
             portfolio.push(portfolio_);
             konto -= buyAmount;
             bought++;
-            // System.out.println("Es wurde was gekauft!" + bought);
         }
     }
 
@@ -63,19 +65,29 @@ public class Trader implements Runnable {
             if (priceToSell <= chartsEntry.close) {
                 konto += portfolioEntry.coinAmount * chartsEntry.close;
                 sold++;
-                // System.out.println("- " + portfolioEntry.boughtAt + " -- " + priceToSell + "
-                // - " + chartsEntry.close);
-                // System.out.println("Es wurde was verkauft!" + sold + "Im Folio: " +
-                // portfolio.size());
+                // saveSellData(portfolioEntry);
                 iterator.remove();
             } else {
                 if (portfolioEntry.boughtTime + forceSellTime < chartsEntry.time && forceSellTime > 0L) {
                     konto += portfolioEntry.coinAmount * chartsEntry.close;
                     sold++;
+                    // saveSellData(portfolioEntry);
                     iterator.remove();
                 }
             }
         }
+    }
+
+    void saveSellData(Portfolio soldEntry) {
+        try {
+            FileWriter fw = new FileWriter("sold_data.csv", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(soldEntry.boughtTime + "," + soldEntry.boughtAt + "\n");
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     void doTrading(WorkloadUnits workloadUnite) throws Exception {
@@ -96,7 +108,7 @@ public class Trader implements Runnable {
     void reset() {
         konto = 500;
         kontoPortfolio = 0;
-        buyAmount = 50;
+        buyAmount = konto / 5;
         portfolio.clear();
         sold = 0;
         bought = 0;
@@ -124,6 +136,9 @@ public class Trader implements Runnable {
             } catch (Exception e) {
                 e.printStackTrace();
                 continue;
+            }
+            if (((konto + kontoPortfolio) / konto_) >= App.highestValue) {
+                App.highestValue = ((konto + kontoPortfolio) / konto_);
             }
             reset();
         }

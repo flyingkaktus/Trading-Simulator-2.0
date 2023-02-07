@@ -10,15 +10,15 @@ import java.util.List;
 
 public class EMA {
     public static void main(String[] args) {
-        String csvFile = "candlestick_data/candlestick_data_ADAUSDT_1m_1613347501000.csv";
+        String csvFile = "data/csv/candlestick_data/candlestick_data_ADAUSDT_1m_1613347501000.csv";
         String line = "";
         String cvsSplitBy = ",";
         List<Data> dataList = new ArrayList<>();
-        int candles0 = 10000;   // 7d
-        int candles1 = 1440;     // 24h
-        int candles2 = 1220;     // 12h
-        int candles3 = 180;      // 3h
-        
+        int candles0 = 10000; // 7d
+        int candles1 = 1440; // 24h
+        int candles2 = 720; // 12h
+        int candles3 = 180; // 3h
+
         DecimalFormat df = new DecimalFormat("#.###");
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
@@ -67,7 +67,7 @@ public class EMA {
             }
 
             // EMA zur CSV hinzufügen
-            try (FileWriter writer = new FileWriter("output_EMA.csv")) {
+            try (FileWriter writer = new FileWriter("data/csv/output_EMA.csv")) {
                 writer.append("timestamp");
                 writer.append(",");
                 writer.append("price");

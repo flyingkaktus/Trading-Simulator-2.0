@@ -6,9 +6,11 @@ import java.util.Scanner;
 
 public class App {
 
+    static float highestValue = 0;
+
     public static void main(String[] args) throws IOException {
         int threads_ = 0;
-        String pathToCSV = "rdy_for_app.csv";
+        String pathToCSV = "data/csv/rdy_for_app.csv";
         Charts charts = new Charts(pathToCSV);
         System.out.println(charts.entries.size());
         int workloadSizeSession = 0;
@@ -27,7 +29,7 @@ public class App {
          * 
          * -> test for 3 months of data (=129.000 entryies)
          * 
-         * -> force sell after 48h
+         * -> force sell after 48h12
          * 
          */
         long heapSize = Runtime.getRuntime().totalMemory();
@@ -38,11 +40,12 @@ public class App {
 
         Workload workload = new Workload();
         workload.range_gain(0.6f, 0.8f, 0.2f);
-        workload.range_EMA(85, 115);
+        workload.range_EMA(90, 110);
         // workload.range_SMMA(94, 106);
         // workload.range_RSI(5, 60);
 
         workload.generate();
+        // workload.generateOne();
         workloadSizeSession = workload.getWorkloadQueueSize();
 
         Scanner scanner = new Scanner(System.in);

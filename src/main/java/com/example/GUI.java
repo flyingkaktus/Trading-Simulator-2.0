@@ -12,14 +12,14 @@ public class GUI {
 
     static DecimalFormat df = new DecimalFormat("#.###");
     static DecimalFormat tm = new DecimalFormat("#");
-    static FixedSizeArray floatArray = new FixedSizeArray(60);
+    static FixedSizeArray floatArray = new FixedSizeArray(180);
 
     static void showProgress(Workload workload, int max) {
         while (workload.getWorkloadQueueSize() != 0) {
             System.out.print("\rWorkload left... " + workload.getWorkloadQueueSize() + " that is: "
                     + df.format(100 - (workload.getWorkloadQueueSize() / (float) max) * 100f) + "%. Time remaining: "
                     + tm.format(workload.getWorkloadQueueSize() / floatArray.average() / 60f)
-                    + "min.                          ");
+                    + "min.         " + "Highest found: " + App.highestValue + "          ");
             try {
                 startWorkload = workload.getWorkloadQueueSize();
                 Thread.sleep(1000);
