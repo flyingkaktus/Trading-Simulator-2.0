@@ -37,3 +37,5 @@ Runtime: 126ms and 1 Threads and Workload of 1. Speed: 126 ms per unite.
 Runtime: 146ms and 1 Threads and Workload of 1. Speed: 146 ms per unite.
 Runtime: 2185019ms and 12 Threads and Workload of 160000. Speed: 13 ms per unite.
 Runtime: 5406175ms and 12 Threads and Workload of 160000. Speed: 33 ms per unite.
+Runtime: 461335ms and 16 Threads and Workload of 10000. Speed: 46 ms per unite.
+Runtime: 223972ms and 15 Threads and Workload of 4096. Speed: 54 ms per unite, done by: deradmin-pluto.

@@ -3,6 +3,7 @@ package com.example;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.net.InetAddress;
 
 public class App {
 
@@ -40,7 +41,7 @@ public class App {
 
         Workload workload = new Workload();
         workload.range_gain(0.6f, 0.8f, 0.2f);
-        workload.range_EMA(90, 110);
+        workload.range_EMA(96, 104);
         // workload.range_SMMA(94, 106);
         // workload.range_RSI(5, 60);
 
@@ -79,10 +80,12 @@ public class App {
                 "Elapsed time: " + elapsedTime + " miliseconds and final size " + workload.getWorkloadQueueSize());
 
         try {
+            InetAddress localHost = InetAddress.getLocalHost();
+            String computerName = localHost.getHostName();
             FileWriter writer = new FileWriter("elapsedTime.txt", true);
             writer.write("Runtime: " + String.valueOf(elapsedTime) + "ms and " + threads_ +
                     " Threads and Workload of " + workloadSizeSession + ". Speed: " + elapsedTime / workloadSizeSession
-                    + " ms per unite.\n");
+                    + " ms per unite, done by: " +computerName +".\n");
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
