@@ -1,2 +1,3 @@
 Runtime: 223972ms and 15 Threads and Workload of 4096. Speed: 54 ms per unite, done by: deradmin-pluto.
 Runtime: 274167ms and 15 Threads and Workload of 4096. Speed: 66 ms per unite, done by: Pluto.
+Runtime: 278503ms and 15 Threads and Workload of 4096. Speed: 67 ms per unite, done by: Pluto.
