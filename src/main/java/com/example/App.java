@@ -4,12 +4,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import java.net.InetAddress;
+import java.util.Locale;
 
 public class App {
 
     static float highestValue = 0;
 
     public static void main(String[] args) throws IOException {
+
+        Locale.setDefault(Locale.ENGLISH);
         int threads_ = 0;
         String pathToCSV = "data/csv/rdy_for_app.csv";
         Charts charts = new Charts(pathToCSV);
@@ -85,7 +88,7 @@ public class App {
             FileWriter writer = new FileWriter("elapsedTime.txt", true);
             writer.write("Runtime: " + String.valueOf(elapsedTime) + "ms and " + threads_ +
                     " Threads and Workload of " + workloadSizeSession + ". Speed: " + elapsedTime / workloadSizeSession
-                    + " ms per unite, done by: " +computerName +".\n");
+                    + " ms per unite, done by: " + computerName + ".\n");
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
